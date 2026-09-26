@@ -26,3 +26,7 @@ Will not fix any bugs thats why its vibecoded and free.
 Look inside the docs folder to start the setup and don't forget to upload the sql.
 </br>
 Don't forget to add the ox_inventory brickphone item.
+
+
+# DLC
+flex_brickphone_hacker is a sample contact system that i use for the saple bank robbery script i made
