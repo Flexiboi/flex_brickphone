@@ -1,0 +1,563 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    background: transparent;
+    overflow: hidden;
+    user-select: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+button,
+textarea {
+    font: inherit;
+}
+
+button {
+    border: 0;
+}
+
+.hidden {
+    display: none !important;
+}
+
+#phone-container {
+    position: fixed;
+    right: 3.5vw;
+    bottom: 3.5vh;
+    width: 300px;
+    height: 565px;
+    z-index: 100;
+}
+
+.phone-shell {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 17px 14px 13px;
+    border-radius: 39px 39px 29px 29px;
+    border: 3px solid #171a1b;
+    background:
+        linear-gradient(90deg, rgba(255,255,255,.08), transparent 9%, transparent 91%, rgba(0,0,0,.18)),
+        linear-gradient(#555b5d, #303637 63%, #41494b);
+    box-shadow:
+        inset 0 0 0 3px #767c7d,
+        inset 0 0 0 6px #242829;
+}
+
+.phone-shell::before {
+    content: "";
+    position: absolute;
+    top: 9px;
+    left: 19px;
+    right: 19px;
+    height: 4px;
+    border-radius: 50%;
+    background: #737a7b;
+    opacity: .65;
+}
+
+.brand {
+    height: 24px;
+    color: #f2f2ef;
+    text-align: center;
+    font-family: "Courier New", monospace;
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 1px #151718;
+}
+
+.phone-screen-frame {
+    height: 247px;
+    padding: 6px;
+    border-radius: 11px;
+    background: #888d8d;
+    box-shadow: inset 0 0 0 2px #25292a;
+}
+
+.phone-screen {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 2px solid #101313;
+    border-radius: 5px;
+    color: #d5d8d2;
+    background:
+        linear-gradient(rgba(255,255,255,.025) 50%, rgba(0,0,0,.03) 50%),
+        #171a19;
+    background-size: 100% 4px;
+    box-shadow: inset 0 0 16px rgba(0,0,0,.75);
+    font-family: "Courier New", Courier, monospace;
+    font-size: clamp(12px, 1vh, 14px);
+}
+
+.screen-status {
+    height: 22px;
+    padding: 3px 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex: 0 0 auto;
+    border-bottom: 1px solid #454847;
+    background: #202321;
+}
+
+.signal {
+    display: flex;
+    align-items: end;
+    gap: 1px;
+    height: 10px;
+}
+
+.signal span {
+    display: block;
+    width: 2px;
+    background: #dfe2dc;
+}
+
+.signal span:nth-child(1) { height: 3px; }
+.signal span:nth-child(2) { height: 5px; }
+.signal span:nth-child(3) { height: 7px; }
+.signal span:nth-child(4) { height: 9px; }
+
+.screen-network {
+    font-size: 9px;
+}
+
+.screen-battery {
+    width: 18px;
+    height: 8px;
+    margin-left: auto;
+    padding: 1px;
+    border: 1px solid #dfe2dc;
+    border-radius: 1px;
+}
+
+.screen-battery::after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 4px;
+    margin: 1px 0 0 1px;
+    background: #dfe2dc;
+}
+
+.screen-battery span {
+    display: block;
+    width: 78%;
+    height: 100%;
+    background: #dfe2dc;
+}
+
+.screen-titlebar {
+    min-height: 22px;
+    padding: 4px 8px;
+    border-bottom: 1px solid #444847;
+    color: #f0f1ed;
+    background: #202321;
+    font-weight: 700;
+    text-shadow: 0 1px #000;
+}
+
+.screen-content {
+    min-height: 0;
+    flex: 1;
+    overflow: hidden;
+}
+
+#contacts-view,
+#messages-view {
+    height: 100%;
+}
+
+#contact-list {
+    list-style: none;
+    margin: 0;
+    padding: 4px 0;
+    height: 100%;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+#contact-list::-webkit-scrollbar,
+#message-history::-webkit-scrollbar {
+    display: none;
+}
+
+#contact-list li {
+    margin: 1px 5px;
+    padding: 5px 7px;
+    border-radius: 2px;
+    color: #d7d9d3;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#contact-list li.selected {
+    color: #111514;
+    background: #b9c0b9;
+    box-shadow: inset 0 0 0 1px #e4e7e0;
+}
+
+.empty-state {
+    padding: 14px 9px;
+    color: #9da29e;
+}
+
+#messages-view {
+    display: flex;
+    flex-direction: column;
+}
+
+#message-history {
+    flex: 1;
+    min-height: 0;
+    padding: 5px 6px;
+    overflow-y: auto;
+    overflow-wrap: anywhere;
+    scrollbar-width: none;
+    line-height: 1.35;
+}
+
+.message {
+    max-width: 94%;
+    margin: 0 0 5px;
+    padding: 5px 6px;
+    border: 1px solid #454947;
+    border-radius: 3px;
+    background: #232725;
+}
+
+.message.contact {
+    margin-right: 13px;
+}
+
+.message.player {
+    margin-left: 13px;
+    color: #151817;
+    background: #aeb6ad;
+    border-color: #d1d6ce;
+}
+
+.message.player::before {
+    content: "> ";
+    font-weight: 900;
+}
+
+.message p {
+    margin: 0 0 4px;
+    white-space: pre-wrap;
+}
+
+.message p:last-child {
+    margin-bottom: 0;
+}
+
+.message ul,
+.message ol {
+    margin: 3px 0 3px 15px;
+    padding: 0;
+}
+
+.message li {
+    margin: 1px 0;
+}
+
+.message h1,
+.message h2,
+.message h3 {
+    margin: 1px 0 4px;
+    line-height: 1.1;
+    color: #eef0eb;
+}
+
+.message.player h1,
+.message.player h2,
+.message.player h3 {
+    color: #151817;
+}
+
+.message h1 { font-size: 1.25em; }
+.message h2 { font-size: 1.13em; }
+.message h3 { font-size: 1em; }
+
+.message blockquote {
+    margin: 4px 0;
+    padding-left: 6px;
+    border-left: 2px solid #aeb4ad;
+}
+
+.message hr {
+    border: 0;
+    border-top: 1px solid #555a57;
+    margin: 5px 0;
+}
+
+.md-inline-code,
+.md-codeblock {
+    font-family: "Courier New", monospace;
+    color: #e0e3dd;
+    background: #0d0f0f;
+}
+
+.message.player .md-inline-code,
+.message.player .md-codeblock {
+    color: #e8ebe5;
+    background: #242826;
+}
+
+.md-inline-code {
+    padding: 1px 3px;
+    border-radius: 2px;
+}
+
+.md-codeblock {
+    display: block;
+    max-width: 100%;
+    padding: 5px;
+    margin: 4px 0;
+    overflow-x: auto;
+    white-space: pre;
+    border: 1px solid #464b48;
+    border-radius: 2px;
+}
+
+.md-spacer {
+    height: 3px;
+}
+
+#message-input-area {
+    flex: 0 0 auto;
+    padding: 4px;
+    border-top: 1px solid #464a48;
+    background: #1b1e1d;
+}
+
+#message-input {
+    display: block;
+    width: 100%;
+    min-height: 28px;
+    max-height: 43px;
+    padding: 4px 5px;
+    resize: none;
+    overflow-y: auto;
+    color: #e3e6df;
+    background: #0f1111;
+    border: 1px solid #555a57;
+    border-radius: 2px;
+    outline: none;
+    font-family: "Courier New", monospace;
+    font-size: 10px;
+    line-height: 1.2;
+}
+
+#message-input:focus {
+    border-color: #aeb5ad;
+}
+
+.screen-footer {
+    min-height: 19px;
+    padding: 3px 7px;
+    display: flex;
+    justify-content: space-between;
+    flex: 0 0 auto;
+    border-top: 1px solid #444846;
+    background: #202321;
+    color: #e5e8e1;
+    font-size: 9px;
+    font-weight: 700;
+}
+
+.soft-row {
+    height: 53px;
+    margin-top: 8px;
+    display: grid;
+    grid-template-columns: 1fr 45px 45px 45px 1fr;
+    align-items: center;
+    gap: 5px;
+}
+
+.phone-button {
+    position: relative;
+    cursor: pointer;
+    color: #2c8ce6;
+    border: 1px solid #8d9291;
+    background: linear-gradient(#d7d9d5, #9fa5a3);
+    box-shadow: inset 0 2px 0 rgba(255,255,255,.6), inset 0 -3px 4px rgba(0,0,0,.22);
+    text-shadow: 0 1px rgba(255,255,255,.6);
+}
+
+.phone-button:active {
+    transform: translateY(2px);
+    box-shadow: inset 0 -1px 2px rgba(0,0,0,.3);
+}
+
+.soft-button {
+    width: 58px;
+    height: 25px;
+    justify-self: center;
+    border-radius: 13px;
+    color: #53605e;
+}
+
+.call-button {
+    width: 38px;
+    height: 28px;
+    justify-self: center;
+    border-radius: 50%;
+    color: #0ba915;
+}
+
+.call-button.end-call {
+    color: #e51a1a;
+}
+
+.call-icon {
+    display: inline-block;
+    font-size: 21px;
+    line-height: 1;
+    transform: rotate(-35deg);
+}
+
+.end-call .call-icon {
+    transform: rotate(135deg);
+}
+
+.nav-pad {
+    width: 45px;
+    height: 47px;
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background: #8c9190;
+    box-shadow: inset 0 0 5px rgba(0,0,0,.3);
+}
+
+.nav-button {
+    width: 32px;
+    height: 18px;
+    color: #cfd4ce;
+    cursor: pointer;
+    background: transparent;
+    font-size: 13px;
+    text-shadow: 0 1px #555;
+}
+
+.keypad {
+    flex: 1;
+    min-height: 0;
+    margin-top: 5px;
+    padding: 1px 3px 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 1fr;
+    gap: 5px 7px;
+}
+
+.num {
+    width: 100%;
+    min-height: 0;
+    border-radius: 10px;
+    font-size: 25px;
+    font-weight: 300;
+    line-height: .8;
+}
+
+.num span {
+    display: block;
+    margin-top: 4px;
+    color: #2b7bc7;
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.message-popup {
+    position: fixed;
+    right: 3.5vw;
+    bottom: 4vh;
+    width: 320px;
+    min-height: 70px;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 10px 12px;
+    border: 2px solid #1b1e1e;
+    border-radius: 11px;
+    color: #e6e9e3;
+    background: linear-gradient(#3f4545, #222626);
+    transform: translateY(140%);
+}
+
+.message-popup.show {
+    display: flex !important;
+    animation: sms-slide 4.6s ease-in-out forwards;
+}
+
+.popup-speaker {
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    color: #252a29;
+    background: #b9c0b9;
+    font: 800 10px "Courier New", monospace;
+}
+
+.popup-copy {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.popup-copy strong {
+    overflow: hidden;
+    color: #f0f2ec;
+    font-size: 11px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.popup-copy span {
+    display: -webkit-box;
+    overflow: hidden;
+    color: #c1c7c1;
+    font: clamp(11px, 0.9vh, 13px)/1.3 "Courier New", monospace;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+@keyframes sms-slide {
+    0% { transform: translateY(140%); opacity: 0; }
+    14% { transform: translateY(0); opacity: 1; }
+    75% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(140%); opacity: 0; }
+}
+
+.message-sender {
+    font-size: 0.72em;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+    opacity: 0.72;
+    letter-spacing: 0.02em;
+}
+.message-body { min-width: 0; }

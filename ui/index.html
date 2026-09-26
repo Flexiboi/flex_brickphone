@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrickPhone</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="phone-container" class="hidden" aria-label="BrickPhone">
+        <div class="phone-shell">
+            <div class="brand">CELLTOWA</div>
+
+            <div class="phone-screen-frame">
+                <div class="phone-screen">
+                    <div class="screen-status">
+                        <div class="signal" aria-hidden="true">
+                            <span></span><span></span><span></span><span></span>
+                        </div>
+                        <div class="screen-network">▴</div>
+                        <div class="screen-battery"><span></span></div>
+                    </div>
+
+                    <div class="screen-titlebar">
+                        <span id="screen-title"></span>
+                    </div>
+
+                    <div class="screen-content">
+                        <div id="contacts-view">
+                            <ul id="contact-list"></ul>
+                            <div id="no-contacts" class="empty-state hidden" data-locale="ui.no_contacts"></div>
+                        </div>
+
+                        <div id="messages-view" class="hidden">
+                            <div id="message-history"></div>
+                            <div id="message-input-area">
+                                <textarea id="message-input" data-locale-placeholder="ui.message_placeholder" maxlength="2000" rows="2"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="screen-footer">
+                        <span id="footer-left"></span>
+                        <span id="footer-right"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="soft-row">
+                <button class="phone-button soft-button" id="soft-left" aria-label="Left soft key"></button>
+                <button class="phone-button call-button" id="call-left" aria-label="Answer">
+                    <span class="call-icon">☎</span>
+                </button>
+                <div class="nav-pad">
+                    <button class="nav-button" id="nav-up" aria-label="Up">▲</button>
+                    <button class="nav-button" id="nav-down" aria-label="Down">▼</button>
+                </div>
+                <button class="phone-button call-button end-call" id="call-right" aria-label="End call">
+                    <span class="call-icon">☎</span>
+                </button>
+                <button class="phone-button soft-button" id="soft-right" aria-label="Right soft key"></button>
+            </div>
+
+            <div class="keypad">
+                <button class="phone-button num" data-key="1">1<span>.</span></button>
+                <button class="phone-button num" data-key="2">2<span>ABC</span></button>
+                <button class="phone-button num" data-key="3">3<span>DEF</span></button>
+                <button class="phone-button num" data-key="4">4<span>GHI</span></button>
+                <button class="phone-button num" data-key="5">5<span>JKL</span></button>
+                <button class="phone-button num" data-key="6">6<span>MNO</span></button>
+                <button class="phone-button num" data-key="7">7<span>PQRS</span></button>
+                <button class="phone-button num" data-key="8">8<span>TUV</span></button>
+                <button class="phone-button num" data-key="9">9<span>WXYZ</span></button>
+                <button class="phone-button num" data-key="*">*</button>
+                <button class="phone-button num" data-key="0">0<span>+</span></button>
+                <button class="phone-button num" data-key="#">#</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="message-popup" class="message-popup hidden" aria-live="polite">
+        <div class="popup-speaker">SMS</div>
+        <div class="popup-copy">
+            <strong id="popup-contact"></strong>
+            <span id="popup-text"></span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
