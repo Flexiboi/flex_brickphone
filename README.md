@@ -1,5 +1,7 @@
 # flex_brickphone
 
+[PREVIEW](https://streamable.com/23yhpm)
+
 A **VIBE CODED** brickphone system for FiveM.
 </br>
 Will not fix any bugs thats why its vibecoded and free.
