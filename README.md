@@ -30,3 +30,6 @@ Don't forget to add the ox_inventory brickphone item.
 
 # DLC
 flex_brickphone_hacker is a sample contact system that i use for the saple bank robbery script i made
+
+# Preview script
+https://github.com/Flexiboi/flex_bankrob_preview
